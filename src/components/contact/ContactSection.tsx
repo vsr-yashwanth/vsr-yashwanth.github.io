@@ -69,25 +69,21 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 relative bg-[#06080e] border-t border-white/10"
+      className="py-16 relative bg-[#06080e] border-t border-white/10"
       aria-label="Contact and Transmission End Section"
       onMouseEnter={() => setCoreMode("contact")}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-orange-400 font-semibold tracking-widest uppercase mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-orange-400 font-semibold tracking-widest uppercase mb-1">
               <Radio className="w-3.5 h-3.5 animate-pulse" />
               <span>08 // TRANSMISSION END</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white uppercase">
               END OF <span className="text-orange-400">TRANSMISSION</span>
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-400 font-mono max-w-xl">
-              &ldquo;If you&apos;ve made it this far, we should probably talk.&rdquo; Open for systems engineering, AI/ML
-              research, and collaborative ventures.
-            </p>
           </div>
 
           <span className="text-xs font-mono text-zinc-500 hidden sm:inline">

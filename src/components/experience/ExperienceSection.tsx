@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { experienceData } from "@/data/experience";
 import { useSystem } from "@/context/SystemContext";
-import { Briefcase, Calendar, MapPin, Award, ChevronRight, ExternalLink } from "lucide-react";
+import { Calendar, MapPin, ExternalLink } from "lucide-react";
 
 export default function ExperienceSection() {
   const { playSound, setCursorText } = useSystem();
@@ -11,34 +11,32 @@ export default function ExperienceSection() {
 
   const types = ["ALL", "RESEARCH", "HACKATHON", "LEADERSHIP", "COMMUNITY"];
 
-  const filteredItems = filterType === "ALL"
-    ? experienceData
-    : experienceData.filter((item) => item.type === filterType);
+  const filteredItems =
+    filterType === "ALL"
+      ? experienceData
+      : experienceData.filter((item) => item.type === filterType);
 
   return (
     <section
       id="experience"
-      className="py-24 relative bg-[#07090e] border-t border-white/10"
+      className="py-16 relative bg-[#07090e] border-t border-white/10"
       aria-label="Experience and Leadership Section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-amber-400 font-semibold tracking-widest uppercase mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-amber-400 font-semibold tracking-widest uppercase mb-1">
               <span className="w-2 h-2 rounded-full bg-amber-400" />
-              <span>04 // TIMELINE & ROLES</span>
+              <span>04 // TIMELINE &amp; ROLES</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase">
-              EXPERIENCE & <span className="text-amber-400">LEADERSHIP</span>
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white uppercase">
+              EXPERIENCE &amp; <span className="text-amber-400">LEADERSHIP</span>
             </h2>
-            <p className="mt-2 text-sm text-zinc-400 font-mono max-w-xl">
-              Chronological record of engineering internships, hackathon team leadership, and institutional responsibilities.
-            </p>
           </div>
 
           {/* Filter Type Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl border border-white/10 bg-[#0c1018]">
+          <div className="flex flex-wrap items-center gap-1 p-1 rounded-xl border border-white/10 bg-[#0c1018]">
             {types.map((t) => (
               <button
                 key={t}
@@ -46,7 +44,7 @@ export default function ExperienceSection() {
                   playSound("hover");
                   setFilterType(t);
                 }}
-                className={`px-3 py-1 text-xs font-mono rounded-lg transition-all ${
+                className={`px-2.5 py-1 text-xs font-mono rounded-lg transition-all ${
                   filterType === t
                     ? "bg-amber-400 text-black font-semibold shadow-[0_0_12px_rgba(245,158,11,0.3)]"
                     : "text-zinc-400 hover:text-white hover:bg-white/5"
@@ -58,40 +56,31 @@ export default function ExperienceSection() {
           </div>
         </div>
 
-        {/* Timeline Items */}
-        <div className="relative border-l border-white/15 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12">
-          {filteredItems.map((item, index) => (
+        {/* Compact Timeline Grid (2 columns on medium+ screens) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="relative group"
+              className="rounded-xl border border-white/10 bg-[#0c1018] p-5 space-y-3 hover:border-amber-400/30 transition-all flex flex-col justify-between"
               onMouseEnter={() => setCursorText("EXP")}
               onMouseLeave={() => setCursorText("")}
             >
-              {/* Timeline Node Point */}
-              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 border-amber-400 bg-[#07090e] group-hover:scale-125 group-hover:bg-amber-400 transition-all shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
-
-              {/* Experience Card */}
-              <div className="rounded-xl border border-white/10 bg-[#0c1018] p-6 sm:p-7 space-y-4 hover:border-amber-400/30 transition-all">
-                {/* Meta Header */}
-                <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-                  <div className="flex items-center gap-2 text-zinc-400">
-                    <Calendar className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{item.period}</span>
-                    <span className="text-white/20">|</span>
-                    <MapPin className="w-3.5 h-3.5 text-zinc-500" />
-                    <span>{item.location}</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-400/10 text-amber-300 border border-amber-400/20">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-amber-400/10 text-amber-300 border border-amber-400/20 font-semibold">
                     {item.type}
                   </span>
+                  <div className="flex items-center gap-1.5 text-zinc-500 text-[11px]">
+                    <Calendar className="w-3 h-3 text-amber-400" />
+                    <span>{item.period}</span>
+                  </div>
                 </div>
 
-                {/* Role and Organization */}
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                  <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
                     {item.role}
                   </h3>
-                  <div className="text-sm font-mono text-zinc-400 mt-1 flex items-center gap-2">
+                  <div className="text-xs font-mono text-zinc-400 flex items-center gap-1.5 mt-0.5">
                     <span>{item.organization}</span>
                     {item.organizationUrl && (
                       <a
@@ -106,37 +95,27 @@ export default function ExperienceSection() {
                   </div>
                 </div>
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans">
-                  {item.description}
-                </p>
-
-                {/* Key Contributions & Achievements */}
-                <div className="space-y-1.5 pt-2">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                    KEY RESPONSIBILITIES & CONTRIBUTIONS:
-                  </span>
-                  <ul className="space-y-1.5 text-xs font-mono text-zinc-300">
-                    {item.achievements.map((ach, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-amber-400 mt-0.5">›</span>
-                        <span className="leading-relaxed">{ach}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Skills used */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/5">
-                  {item.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/5 text-[10px] font-mono text-zinc-400"
-                    >
-                      {skill}
-                    </span>
+                {/* 2 Key Responsibilities */}
+                <ul className="text-xs font-mono text-zinc-300 space-y-1 pt-1">
+                  {item.achievements.slice(0, 2).map((ach, i) => (
+                    <li key={i} className="flex items-start gap-1.5 line-clamp-2">
+                      <span className="text-amber-400 mt-0.5">›</span>
+                      <span>{ach}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
+              </div>
+
+              {/* Skills */}
+              <div className="flex flex-wrap gap-1 pt-2 border-t border-white/5">
+                {item.skills.slice(0, 4).map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/5 text-[10px] font-mono text-zinc-400"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           ))}

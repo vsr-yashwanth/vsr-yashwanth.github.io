@@ -157,28 +157,24 @@ export default function LabSection() {
   return (
     <section
       id="lab"
-      className="py-24 relative bg-[#07090e] border-t border-white/10"
+      className="py-16 relative bg-[#07090e] border-t border-white/10"
       aria-label="Experimental Lab Section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-yellow-400 font-semibold tracking-widest uppercase mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-yellow-400 font-semibold tracking-widest uppercase mb-1">
               <FlaskConical className="w-3.5 h-3.5" />
               <span>07 // THE EXPERIMENTAL LAB</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white uppercase">
               ACTIVE <span className="text-yellow-400">PROTOTYPES</span>
             </h2>
-            <p className="mt-2 text-sm text-zinc-400 font-mono max-w-xl">
-              &ldquo;Things I&apos;m building because I wanted to know if I could.&rdquo; Unfinished experiments, physics
-              simulations, and exploratory code.
-            </p>
           </div>
 
-          <span className="text-xs font-mono text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded border border-yellow-400/20">
-            SANDBOX ENVIRONMENT
+          <span className="text-xs font-mono text-yellow-400 bg-yellow-400/10 px-2.5 py-1 rounded border border-yellow-400/20">
+            INTERACTIVE SANDBOX
           </span>
         </div>
 
