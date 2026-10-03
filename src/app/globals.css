@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-void: #07090e;
+    --bg-surface-1: #0c1018;
+    --bg-surface-2: #121824;
+    --bg-surface-3: #182234;
+    --border-dim: rgba(255, 255, 255, 0.07);
+    --border-bright: rgba(255, 255, 255, 0.18);
+    --border-accent: rgba(255, 140, 55, 0.4);
+    --border-cyan: rgba(0, 229, 255, 0.4);
+    --accent-orange: #ff8c37;
+    --accent-orange-glow: rgba(255, 140, 55, 0.15);
+    --accent-cyan: #00e5ff;
+    --accent-cyan-glow: rgba(0, 229, 255, 0.15);
+    --accent-emerald: #10b981;
+    --text-primary: #edf2f7;
+    --text-secondary: #94a3b8;
+    --text-dim: #64748b;
+  }
+
+  * {
+    border-color: var(--border-dim);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+  }
+
+  body {
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    selection-background-color: var(--accent-orange);
+    selection-color: #000;
+  }
+
+  ::selection {
+    background: #ff8c37;
+    color: #07090e;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #182234;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8c37;
+}
+
+/* Background Grid Pattern */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle at 50% 30%, transparent 20%, #07090e 90%);
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Subtle scanlines effect for lab aesthetic */
+.scanline-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.3)
+  );
+  background-size: 100% 4px;
+}
+
+/* Glowing Border Utilities */
+.border-glow-orange {
+  box-shadow: 0 0 25px -5px rgba(255, 140, 55, 0.2);
+}
+
+.border-glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(0, 229, 255, 0.2);
+}
+
+/* Monospace Stamp Utility */
+.font-mono-tag {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Micro-animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+/* Card hover transitions */
+.quill-card {
+  background: #0c1018;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quill-card:hover {
+  background: #111722;
+  border-color: rgba(255, 140, 55, 0.35);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(255, 140, 55, 0.15);
+}
+
+/* Custom Cursor Clean Display — scoped strictly when custom cursor is confirmed active */
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role="button"],
+html.has-custom-cursor label {
+  cursor: none !important;
+}
+
+/* Form inputs and interactive editors ALWAYS preserve the text selection caret */
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select,
+html.has-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+
+.cursor-hover-active {
+  border-color: #ff8c37 !important;
+  background-color: rgba(255, 140, 55, 0.18) !important;
+  box-shadow: 0 0 18px rgba(255, 140, 55, 0.35) !important;
+}
